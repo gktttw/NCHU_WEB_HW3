@@ -11,7 +11,16 @@
 
 					var x = document.createElement("TABLE");
 					x.setAttribute("id", "myTable");
+					x.setAttribute("align", "center");
 					document.body.appendChild(x);
+
+					var c = document.createElement("CAPTION");
+					c.setAttribute("id","ccc");
+					c.setAttribute("onmouseover","moveleft()");
+					c.style.fontSize = "30px";
+			    var t = document.createTextNode("RESULT");
+			    c.appendChild(t);
+			    document.getElementById("myTable").appendChild(c);
 
 					for ( i=0; i < document.getElementById("form1").elements.length ; i++){
 						switch (document.form1.elements[i].type){
@@ -24,6 +33,7 @@
                 z.appendChild(t);
                 document.getElementById(i).appendChild(z);
                 var z = document.createElement("TD");
+
                 var t = document.createTextNode(document.form1.elements[i].value);
                 z.appendChild(t);
                 document.getElementById(i).appendChild(z);
@@ -104,7 +114,40 @@
             }
 					}
 
+					var links = document.getElementsByTagName("TH");
+					for (i = 0; i < links.length; i++) {
+							links[i].onmouseover = function() {
+								this.style.color='red';
+								this.style.fontSize="x-large";
+							};
+							links[i].onmouseout = function() {
+								this.style.color='black';
+								this.style.fontSize="initial";
+							};
+					}
 
+					var tds = document.getElementsByTagName("TD");
+					for (i = 0; i < tds.length; i++) {
+							tds[i].onmouseover = function() {
+								this.style.color='blue';
+								this.style.fontSize="larger";
+								this.style.fontWeight="bolder";
+							};
+							tds[i].onmouseout = function() {
+								this.style.color='black';
+								this.style.fontSize="smaller";
+								this.style.fontWeight="lighter";
+							};
+					}
+
+					var m = document.createElement ("marquee");
+					m.setAttribute("behavior","scroll");
+					m.setAttribute("direction","left");
+					m.setAttribute("onmouseover","stop()");
+					m.setAttribute("onmouseout","start()");
+			    var t = document.createTextNode("END OF RESULT");
+			    m.appendChild(t);
+			    document.body.appendChild(m);
 					/*var HTML = "<table border=1 width=25% align=center>";
 					HTML+= "<tr><td width=35%>username</td><td>"+document.form1.username.value+"</td></tr>";
 					HTML+= "<tr><td>birthday</td><td>"+document.form1.birthday.value+"</td></tr>";
@@ -167,6 +210,15 @@
 					document.getElementById("ssER").innerHTML ="";
 					return true;
 				}
+			}
+			function moveleft(){
+				var h = document.getElementById("myH2");
+				h.style.position = "absolute";
+				h.style.left = 0;
+			}
+			function moveback(){
+				var h = document.getElementById("myH2");
+				h.style.position = "relative";
 			}
 
 		</script>
