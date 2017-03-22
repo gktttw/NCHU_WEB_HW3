@@ -3,11 +3,21 @@
 	<head>
 		<script>
 			function myfunction(){
+				if (document.getElementById("myTable")) {
+					var parent = document.body;
+					var child = document.getElementById("myTable");
+					var child2 = document.getElementById("mId");
+					parent.removeChild(child);
+					parent.removeChild(child2);
+				}
+				//alert(ex);
 				a = nameValidate(document.form1.username.value);
 				b = bdValidate(document.form1.birthday.value);
 				c = noteValidate(document.form1.note.value);
 				d = sexValidate(document.form1.sex.value);
 				if ( a == true && b == true && c == true && d == true){
+
+
 
 					var x = document.createElement("TABLE");
 					x.setAttribute("id", "myTable");
@@ -141,6 +151,7 @@
 					}
 
 					var m = document.createElement ("marquee");
+					m.setAttribute("id","mId");
 					m.setAttribute("behavior","scroll");
 					m.setAttribute("direction","left");
 					m.setAttribute("onmouseover","stop()");
